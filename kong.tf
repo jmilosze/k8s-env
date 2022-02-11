@@ -21,11 +21,11 @@ resource "helm_release" "kong" {
     value = "NodePort"
   }
   set {
-    name  = "http.nodePort"
+    name  = "proxy.http.nodePort"
     value = 32080
   }
   set {
-    name  = "tls.nodePort"
+    name  = "proxy.tls.nodePort"
     value = 32443
   }
 }

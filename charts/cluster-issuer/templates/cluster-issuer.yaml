@@ -4,4 +4,4 @@ metadata:
   name: ca-issuer
 spec:
   ca:
-    secretName: {{ .Values.secretName }}
+    secretName: "ca-key-pair"
