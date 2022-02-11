@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: echo
+  annotations:
+    konghq.com/host-aliases: "kong-kong-proxy.kong.svc.cluster.local"
   labels:
     app: echo
 spec:

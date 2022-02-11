@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "echo_server" {
 
 resource "helm_release" "echo_server" {
   count = var.echo_server == true ? 1 : 0
-  depends_on = [kubernetes_namespace.echo_server]
+  depends_on = [kubernetes_namespace.echo_server, helm_release.kong]
 
   name  = "echo-server"
   chart = "./charts/echo-server"
