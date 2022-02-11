@@ -5,12 +5,14 @@ resource "kubernetes_namespace" "kong" {
 }
 
 resource "helm_release" "kong" {
+  count = var.kong == true ? 1 : 0
   depends_on = [kubernetes_namespace.kong]
 
   name       = "kong"
   repository = "https://charts.konghq.com"
   chart      = "kong"
   namespace  = "kong"
+  version    = "2.6.4"
 
   set {
     name  = "installCRDs"
