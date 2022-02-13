@@ -17,3 +17,8 @@ variable "probe" {
   type        = bool
   description = "Enable/disable netshoot probe."
 }
+
+variable "mongodb" {
+  type        = bool
+  description = "Enable/disable mongodb."
+}
