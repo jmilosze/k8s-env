@@ -1,4 +1,4 @@
-variable "echo_server" {
+variable "echo" {
   type        = bool
   description = "Enable/disable echo server. Requires Kong."
 }

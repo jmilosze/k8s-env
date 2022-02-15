@@ -1,6 +1,6 @@
 kong         = true
-echo_server  = true # requires kong
+echo         = true # requires kong
 cert_manager = true
 probe        = true
-mongodb      = true
+mongodb      = true # requires cert-manager
 

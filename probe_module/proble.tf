@@ -1,8 +1,15 @@
+resource "kubernetes_namespace" "probe" {
+  metadata {
+    name = "probe"
+  }
+}
+
 resource "kubernetes_deployment" "probe" {
-  count = var.probe == true ? 1 : 0
+  depends_on = [kubernetes_namespace.probe]
 
   metadata {
     name   = "probe"
+    namespace = "probe"
     labels = {
       app = "probe"
     }

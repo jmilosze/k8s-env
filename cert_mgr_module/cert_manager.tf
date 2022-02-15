@@ -5,7 +5,6 @@ resource "kubernetes_namespace" "cert_manager" {
 }
 
 resource "helm_release" "cert_manager" {
-  count = var.cert_manager == true ? 1 : 0
   depends_on = [kubernetes_namespace.cert_manager]
 
   name       = "cert-manager"
@@ -20,8 +19,7 @@ resource "helm_release" "cert_manager" {
   }
 }
 
-resource "kubernetes_secret" "cert_manager_ca" {
-  count = var.cert_manager == true ? 1 : 0
+resource "kubernetes_secret" "cert_manager_ca_key_pair" {
   depends_on = [kubernetes_namespace.cert_manager]
 
   metadata {
@@ -30,21 +28,19 @@ resource "kubernetes_secret" "cert_manager_ca" {
   }
 
   data = {
-    "tls.crt" = file("${path.module}/ca-cert.pem")
-    "tls.key" = file("${path.module}/ca-key.pem")
+    "tls.crt" = file("${path.root}/ca-cert.pem")
+    "tls.key" = file("${path.root}/ca-key.pem")
   }
 }
 
 resource "time_sleep" "wait_after_cert_manager" {
-  count = var.cert_manager == true ? 1 : 0
   depends_on = [helm_release.cert_manager]
   create_duration = "10s"
 }
 
 resource "helm_release" "ca_issuer" {
-  count = var.cert_manager == true ? 1 : 0
   depends_on = [time_sleep.wait_after_cert_manager]
 
   name  = "cluster-issuer"
-  chart = "./charts/cluster-issuer"
+  chart = "${path.module}/cluster-issuer"
 }
