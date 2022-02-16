@@ -1,6 +1,11 @@
+variable "cilium" {
+  type        = bool
+  description = "Enable/disable cilium. equires cluster without cni."
+}
+
 variable "echo" {
   type        = bool
-  description = "Enable/disable echo server. Requires Kong."
+  description = "Enable/disable echo server. Requires kong."
 }
 
 variable "cert_manager" {

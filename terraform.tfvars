@@ -1,6 +1,6 @@
-kong         = true
-echo         = true # requires kong
-cert_manager = true
-probe        = true
-mongodb      = true # requires cert-manager
-
+cilium       = true # requires cluster without cni
+kong         = false
+cert_manager = false
+mongodb      = false # requires cert-manager
+echo         = false # requires kong
+probe        = false
