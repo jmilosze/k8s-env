@@ -13,6 +13,11 @@ variable "cert_manager" {
   description = "Enable/disable cert-manager."
 }
 
+variable "prometheus" {
+  type        = bool
+  description = "Enable/disable prometheus."
+}
+
 variable "kong" {
   type        = bool
   description = "Enable/disable kong."

@@ -49,3 +49,10 @@ module "mongodb" {
 
   source = "./modules/mongodb"
 }
+
+module "prometheus" {
+  count = var.prometheus == true ? 1 : 0
+  depends_on = [module.cilium]
+
+  source = "./modules/prometheus"
+}
