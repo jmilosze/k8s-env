@@ -23,7 +23,7 @@ variable "kong" {
   description = "Enable/disable kong."
 }
 
-variable "probe" {
+variable "netshoot" {
   type        = bool
   description = "Enable/disable netshoot probe."
 }

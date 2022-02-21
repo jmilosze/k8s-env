@@ -1,17 +1,17 @@
-resource "kubernetes_namespace" "probe" {
+resource "kubernetes_namespace" "netshoot" {
   metadata {
-    name = "probe"
+    name = "netshoot"
   }
 }
 
-resource "kubernetes_deployment" "probe" {
-  depends_on = [kubernetes_namespace.probe]
+resource "kubernetes_deployment" "netshoot" {
+  depends_on = [kubernetes_namespace.netshoot]
 
   metadata {
-    name   = "probe"
-    namespace = "probe"
+    name   = "netshoot"
+    namespace = "netshoot"
     labels = {
-      app = "probe"
+      app = "netshoot"
     }
   }
 
@@ -20,14 +20,14 @@ resource "kubernetes_deployment" "probe" {
 
     selector {
       match_labels = {
-        app = "probe"
+        app = "netshoot"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "probe"
+          app = "netshoot"
         }
       }
 

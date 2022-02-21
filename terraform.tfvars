@@ -4,4 +4,4 @@ cert_manager = false
 prometheus   = true
 mongodb      = false # requires cert-manager
 echo         = false # requires kong
-probe        = false
+netshoot     = true

@@ -37,10 +37,10 @@ module "cert_manager" {
 }
 
 module "probe" {
-  count = var.probe == true ? 1 : 0
+  count = var.netshoot == true ? 1 : 0
   depends_on = [module.cilium]
 
-  source = "./modules/probe"
+  source = "./modules/netshoot"
 }
 
 module "mongodb" {
